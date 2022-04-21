@@ -5,8 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.lyzirving.leetcode.debug.algorithmn.Utils;
-import com.lyzirving.leetcode.debug.data.ListNode;
+import com.lyzirving.leetcode.debug.data.ArrayUtil;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,12 +13,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(2);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(4);
-        head.next.next.next.next = new ListNode(5);
-        head = Utils.reverseGroup(head, 2);
-        Log.i("test", "finish");
+        int[] src = new int[]{3,3};
+        int rest = ArrayUtil.removeSpecificItem(src, 3);
+        Log.i("test", "result = " + rest);
     }
 }

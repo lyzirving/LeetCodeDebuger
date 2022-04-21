@@ -1,9 +1,6 @@
-package com.lyzirving.leetcode.debug.algorithmn;
+package com.lyzirving.leetcode.debug.data;
 
-import com.lyzirving.leetcode.debug.data.ListNode;
-
-public class Utils {
-
+public class ListUtil {
     /**
      * LeetCode No.25
      * @param head head node of the list
@@ -89,5 +86,4 @@ public class Utils {
         }
         return head;
     }
-
 }
