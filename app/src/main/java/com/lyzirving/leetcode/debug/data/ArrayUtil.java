@@ -24,6 +24,34 @@ public class ArrayUtil {
         return count - repeat;
     }
 
+    public static int divide(int dividend, int divisor) {
+        if(dividend == 0)
+            return 0;
+        boolean diffSymbol = false;
+        if(dividend * divisor < 0)
+            diffSymbol = true;
+
+        int i = 0;
+        if(diffSymbol) divisor *= -1;
+        int val = divisor;
+        if(dividend < 0) {
+            while(val >= dividend) {
+                i++;
+                val += divisor;
+                if(i == Integer.MAX_VALUE && val > dividend)
+                    return Integer.MAX_VALUE;
+            }
+        } else {
+            while(val <= dividend) {
+                i++;
+                val += divisor;
+                if(i == Integer.MAX_VALUE && val < dividend)
+                    return Integer.MAX_VALUE;
+            }
+        }
+        return diffSymbol ? i * -1 : i;
+    }
+
     public static int removeRepeatItem_DoublePtr(int[] num) {
         if (num == null || num.length == 0) return 0;
         if (num.length == 1) return 1;
@@ -38,28 +66,4 @@ public class ArrayUtil {
         }
         return slow;
     }
-
-    public static int removeSpecificItem(int[] nums, int val) {
-        if (nums == null || nums.length == 0) return 0;
-        if (nums.length == 1) return nums[0] == val ? 0 : 1;
-        int count = nums.length;
-        int repeat = 0;
-        int slotUsed = 0;
-        int pt1 = 0;
-        while ((pt1 + slotUsed) < count) {
-            if (nums[pt1] == val) {
-                repeat++;
-                int slot = count - 1 - slotUsed;
-                while(pt1 < slot && nums[slot] == val)
-                    slot--;
-                if (slot <= pt1)
-                    break;
-                nums[pt1] = nums[slot];
-                slotUsed++;
-            }
-            pt1++;
-        }
-        return count - repeat;
-    }
-
 }
